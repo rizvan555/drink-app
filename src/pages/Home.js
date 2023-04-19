@@ -9,7 +9,8 @@ const HomeStyled = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  gap: 10vh;
+  padding: 20px;
+  gap: 5vh;
   .top-section,
   .bottom-section {
     display: flex;
@@ -18,19 +19,19 @@ const HomeStyled = styled.div`
     justify-content: center;
     width: 80vw;
     img {
-      width: 50vw;
+      width: 40vw;
     }
     a {
       font-size: 50px;
       background-color: orange;
       text-decoration: none;
       color: white;
-      width: 47vw;
-      padding: 20px;
+      width: 40vw;
+      height: 10vh;
     }
     p {
-      width: 50vw;
-      font-size: 30px;
+      width: 40vw;
+      font-size: 20px;
       font-weight: 600;
     }
   }
@@ -52,7 +53,7 @@ const Home = () => {
 
       <section className="bottom-section">
         <img src={img2} alt="img2" />
-        <Link>Random Beers</Link>
+        <Link to="/random">Random Beers</Link>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita
           facilis temporibus ab a iure at autem quibusdam explicabo non,
