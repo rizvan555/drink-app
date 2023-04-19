@@ -3,6 +3,7 @@ import beerList from "../data/beerList.json";
 import Button from "../components/Buttons/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const AllBeersContainer = styled.div`
   display: flex;
@@ -67,13 +68,15 @@ const AllBeersList = () => {
       <AllBeersListStyled>
         {beers.map((beer) => {
           return (
-            <div className="item-box">
+            <div className="item-box" key={uuidv4()}>
               <img src={beer.image_url} alt="img" />
               <div className="right-box">
                 <h1>{beer.name}</h1>
                 <h2>{beer.tagline}</h2>
                 <h3>Created by: {beer.contributed_by}</h3>
-                <Button />
+                <Link to={`/beerDetails/${beer._id}`}>
+                  <Button />
+                </Link>
               </div>
             </div>
           );

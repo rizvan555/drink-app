@@ -3,6 +3,8 @@ import beerList from "../data/beerList.json";
 import styled from "styled-components";
 import HomeButton from "../components/Buttons/HomeButton";
 import Back from "../resource/icons/Back.png";
+import { v4 as uuidv4 } from "uuid";
+import { useParams } from "react-router-dom";
 
 const BeerDetailsStyled = styled.section`
   display: flex;
@@ -46,28 +48,29 @@ const BeerDetails = (props) => {
   const [beers, setBeers] = useState([]);
   useEffect(() => {
     setBeers(beerList);
-  }, [beerList]);
+  }, []);
+
+  const idParams = useParams();
+  const filtered = beers.find((beer) => beer._id === idParams.id);
 
   return (
     <BeerDetailsStyled>
-      {beers.map((beer) => {
-        return (
-          <>
-            <img src={beer.image_url} alt="" className="main-image" />
-            <div className="bottom-container">
-              <h1>{beer.name}</h1>
-              <h2>{beer.tagline}</h2>
-              <div className="date-box">
-                <h6>First brewed: {beer.first_brewed}</h6>
-                <h6>First brewed: {beer.attenuation_level}</h6>
-              </div>
-              <p>{beer.description}</p>
-              <img src={Back} alt="backImage" className="back-button" />
+      {filtered && (
+        <div key={uuidv4()}>
+          <img src={filtered.image_url} alt="" className="main-image" />
+          <div className="bottom-container">
+            <h1>{filtered.name}</h1>
+            <h2>{filtered.tagline}</h2>
+            <div className="date-box">
+              <h6>First brewed: {filtered.first_brewed}</h6>
+              <h6>First brewed: {filtered.attenuation_level}</h6>
             </div>
+            <p>{filtered.description}</p>
+            <img src={Back} alt="backImage" className="back-button" />
             <HomeButton width="40vw" />
-          </>
-        );
-      })}
+          </div>
+        </div>
+      )}
     </BeerDetailsStyled>
   );
 };
