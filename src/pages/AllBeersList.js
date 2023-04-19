@@ -4,6 +4,7 @@ import Button from "../components/Buttons/button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import HomeButton from "../components/Buttons/HomeButton";
 
 const AllBeersContainer = styled.div`
   display: flex;
@@ -45,18 +46,6 @@ const AllBeersListStyled = styled.div`
     }
   }
 `;
-const HomeButton = styled(Link)`
-  width: 54vw;
-  padding: 10px;
-  border: none;
-  background-color: orange;
-  text-align: center;
-  img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-`;
 
 const AllBeersList = () => {
   const [beers, setBeers] = useState([]);
@@ -83,7 +72,7 @@ const AllBeersList = () => {
         })}
       </AllBeersListStyled>
 
-      <HomeButton />
+      <HomeButton width="55vw" />
     </AllBeersContainer>
   );
 };

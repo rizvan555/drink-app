@@ -4,7 +4,7 @@ import styled from "styled-components";
 import HomeButton from "../components/Buttons/HomeButton";
 import Back from "../resource/icons/Back.png";
 import { v4 as uuidv4 } from "uuid";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const BeerDetailsStyled = styled.section`
   display: flex;
@@ -14,17 +14,18 @@ const BeerDetailsStyled = styled.section`
   width: 40vw;
   margin: 20px auto;
   border: 1px solid #e3e3e3;
-  padding: 20px;
-
+  text-align: center;
   .main-image {
-    width: 15vw;
-    height: 50vh;
+    width: 10vw;
+    height: 40vh;
+    margin: 2vh auto;
   }
 
   .bottom-container {
     width: 35vw;
+    text-align: start;
     h1 {
-      font-size: 50px;
+      font-size: 40px;
     }
     h2 {
       color: orange;
@@ -36,7 +37,7 @@ const BeerDetailsStyled = styled.section`
       color: gray;
     }
     .back-button  {
-      margin: 8vh 0;
+      margin: 4vh 0;
     }
     p {
       font-weight: bold;
@@ -66,11 +67,13 @@ const BeerDetails = (props) => {
               <h6>First brewed: {filtered.attenuation_level}</h6>
             </div>
             <p>{filtered.description}</p>
-            <img src={Back} alt="backImage" className="back-button" />
-            <HomeButton width="40vw" />
+            <Link to="/allBeersList">
+              <img src={Back} alt="backImage" className="back-button" />
+            </Link>
           </div>
         </div>
       )}
+      <HomeButton width="40vw" />
     </BeerDetailsStyled>
   );
 };

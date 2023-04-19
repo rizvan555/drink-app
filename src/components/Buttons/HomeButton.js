@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const HomeButtonStyled = styled(Link)`
   width: ${(props) => props.width};
-  padding: 20px;
+  padding: ${(props) => props.padding};
   border: none;
   background-color: orange;
   text-align: center;
@@ -12,12 +12,13 @@ const HomeButtonStyled = styled(Link)`
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin: 10px auto;
   }
 `;
 
-const HomeButton = ({ icon, width }) => {
+const HomeButton = ({ icon, width, padding }) => {
   return (
-    <HomeButtonStyled to="/" width={width}>
+    <HomeButtonStyled to="/" width={width} padding={padding}>
       <img src={Logo} alt="logo" />
     </HomeButtonStyled>
   );
